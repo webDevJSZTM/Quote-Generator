@@ -1,17 +1,16 @@
 window.console.log('testing');
 
-let apiQuotes = [];
-
-function newQuote(){
-    
+function newQuote(apiQuotes){
+    return apiQuotes[Math.round(Math.random()*apiQuotes.length-1)];
 }
 
 async function getQuotes(){
     const apiUrl = 'https://type.fit/api/quotes';
+    let apiQuotes = [];
     try {
         const response = await fetch(apiUrl);
         apiQuotes = await response.json();
-        newQuote();
+        console.log(newQuote(apiQuotes));
     } catch (error) {
         alert(error);
     }
